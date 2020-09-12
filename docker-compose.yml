@@ -1,0 +1,41 @@
+version: "2.1"
+
+services:
+  # web:
+  #   build: .
+  #   command: bash -c "nodemon src/server.js"
+  #   volumes:
+  #     - "./services/insert:/src"
+  #     - "./services/insert/package.json:/src/package.json"
+  #   ports:
+  #     - "3000:3000"
+
+  # postgres:
+  #   image: postgres:latest
+  #   ports:
+  #     - "5432:5432"
+  #   environment:
+  #     POSTGRES_USER: postgres
+  #     POSTGRES_DB: getninjas
+  #     POSTGRES_PASSWORD: postgres
+
+  insert:
+    container_name: insert
+    build: ./services/insert/
+    command: bash -c "nodemon src/server.js"
+    volumes:
+      - "./services/insert:/src"
+      - "./services/insert/package.json:/src/package.json"
+    ports:
+      - "3000:3000" # expose ports - HOST:CONTAINER
+
+  service_google:
+    container_name: service_google
+    build: ./services/service_google/
+    command: bash -c "nodemon src/server.js"
+    volumes:
+      - "./services/service_google:/src"
+      - "./services/service_google/package.json:/src/package.json"
+    ports:
+      - "3001:3001" # expose ports - HOST:CONTAINER
+
