@@ -22,7 +22,7 @@ services:
   insert:
     container_name: insert
     build: ./services/insert/
-    command: bash -c "nodemon src/server.js"
+    command: bash -c "yarn sequelize db:migrate && nodemon src/server.js"
     volumes:
       - "./services/insert:/src"
       - "./services/insert/package.json:/src/package.json"
