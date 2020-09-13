@@ -1,15 +1,6 @@
 version: "2.1"
 
 services:
-  # web:
-  #   build: .
-  #   command: bash -c "nodemon src/server.js"
-  #   volumes:
-  #     - "./services/insert:/src"
-  #     - "./services/insert/package.json:/src/package.json"
-  #   ports:
-  #     - "3000:3000"
-
   # postgres:
   #   image: postgres:latest
   #   ports:
