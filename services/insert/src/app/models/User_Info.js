@@ -4,10 +4,9 @@ class User_Info extends Model {
   static init(sequelize) {
     super.init(
       {
+        phone: DataTypes.STRING,
         name: DataTypes.STRING,
         email: DataTypes.STRING,
-        cpf: DataTypes.STRING,
-        code: DataTypes.INTEGER,
       },
       {
         sequelize,

@@ -1,7 +1,6 @@
 const express = require("express");
+const RequestController = require("./app/controllers/RequestController");
 const routes = express.Router();
 
-routes.get("/", (req, res) => {
-  return res.json("OK");
-});
+routes.post("/create", RequestController.create);
 module.exports = routes;
