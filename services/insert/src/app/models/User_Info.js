@@ -13,6 +13,12 @@ class User_Info extends Model {
       }
     );
   }
+  static associate(models) {
+    this.hasOne(models.Request, {
+      foreignKey: "user",
+      as: "user_show",
+    });
+  }
 }
 
 module.exports = User_Info;

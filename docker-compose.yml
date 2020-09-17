@@ -1,14 +1,14 @@
 version: "2.1"
 
 services:
-  # postgres:
-  #   image: postgres:latest
-  #   ports:
-  #     - "5432:5432"
-  #   environment:
-  #     POSTGRES_USER: postgres
-  #     POSTGRES_DB: getninjas
-  #     POSTGRES_PASSWORD: postgres
+  postgres:
+    image: postgres:latest
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_DB: getninjas
+      POSTGRES_PASSWORD: postgres
 
   insert:
     container_name: insert

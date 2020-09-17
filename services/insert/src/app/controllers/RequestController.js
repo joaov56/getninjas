@@ -1,4 +1,4 @@
-const Adress = require("../models/Adress_Info");
+const Adress = require("../models/AddressAttributes");
 const Request = require("../models/Request");
 const User_Info = require("../models/User_Info");
 
@@ -20,16 +20,29 @@ module.exports = {
       name,
       email,
     });
-    return res.json(user_info);
 
-    // const adress_info = Adress.create({
-    //   city,
-    //   neighborhood,
-    //   street,
-    //   uf,
-    //   zip_code,
-    // });
+    const adress = await Adress.create({
+      city,
+      neighborhood,
+      street,
+      uf,
+      zip_code,
+    });
 
-    // return adress_info;
+    const user = user_info.dataValues.id;
+    const adress_info = adress.dataValues.id;
+    await Request.create({
+      user,
+      adress_info,
+    });
+
+    const request = await Request.findAll({
+      include: [
+        { association: "user_info" },
+        { association: "address_atributes" },
+      ],
+    });
+
+    return res.json(request);
   },
 };
